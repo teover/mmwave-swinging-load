@@ -29,20 +29,26 @@ subplot(2,1,1);
 plot(dataset.timestampsec, dataset.closestValue,'.')
 hold on
 plot(95 ,0.377,'o', 'MarkerSize', 25, 'MarkerEdgeColor','black')
-ylabel("Displacement [m]")
+legend('IWR6843 measurement','Data zoom area')
+%set(gca,'FontSize',12)
+
+ylabel("Range to floor [m]")
 xlabel('Time [sec]')
 grid minor
+title('(a)')
+
 
 % hold on
 subplot(2,1,2); 
 plot(dataset.timestampsec, dataset.closestValue,'.')
-ylabel("Displacement [m]")
+ylabel("Range to floor [m]")
 xlabel('Time [sec]')
 grid minor
 axis([90 100 0.374 0.382])
+title('(b)')
 
 
-set(gca,'FontSize',12)
+%set(gca,'FontSize',12)
 saveas(gcf, "eps-figures/beam", "epsc")
 saveas(gcf, "eps-figures/beam", "png")
 
