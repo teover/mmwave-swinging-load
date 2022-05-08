@@ -1,9 +1,9 @@
 close all;clear;clc;
 
 % 1843 table
-timmwaveradarscan = readtable("resolution_logs/2022-03-02-19-19-43-ti_mmwave-radar_scan.csv");
+timmwaveradarscan = readtable("logs/resolution_logs/2022-03-02-19-19-43-ti_mmwave-radar_scan.csv");
 % 6843 table
-datalog = readtable("resolution_logs/6843_data_log.csv");
+datalog = readtable("logs/resolution_logs/6843_data_log.csv");
 
 % closestValue is used, any can be used. dummy value to have 0 to plot
 % against
