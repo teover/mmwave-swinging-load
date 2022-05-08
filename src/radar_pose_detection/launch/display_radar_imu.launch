@@ -1,0 +1,25 @@
+<launch>
+
+  <arg name="model" default="$(find radar_pose_detection)/urdf/pile-setup-imu-radar.urdf"/>
+  <arg name="gui" default="false" />
+  <arg name="rvizconfig" default="$(find radar_pose_detection)/rviz/urdf.rviz" />
+
+  <!-- Input arguments -->
+  <arg name="device" value="1642" doc="TI mmWave sensor device type [1443, 1642]"/>
+  <arg name="config" value="2d" doc="TI mmWave sensor device configuration [3d_best_range_res (not supported by 1642 EVM), 2d_best_range_res]"/>
+  <arg name="max_allowed_elevation_angle_deg" default="90" doc="Maximum allowed elevation angle in degrees for detected object data [0 > value >= 90]}"/>
+  <arg name="max_allowed_azimuth_angle_deg" default="90" doc="Maximum allowed azimuth angle in degrees for detected object data [0 > value >= 90]}"/>
+
+  <!-- Static transform from map to base_radar_link for visualization of stand-alone mmWave sensor using Rviz -->
+  <node pkg="tf" type="static_transform_publisher" name="static_tf_map_to_base_radar_link" args="0 0 0 0 0 0 ti_mmwave_pcl ti_mmwave 30"/>
+
+
+  <param name="robot_description" command="$(find xacro)/xacro $(arg model)" />
+
+  <node if="$(arg gui)" name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+  <node name="listener_imu" pkg="radar_pose_detection" type="listener_imu.py" />
+  <node name="listener_radar" pkg="radar_pose_detection" type="listener_radar.py" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+</launch>

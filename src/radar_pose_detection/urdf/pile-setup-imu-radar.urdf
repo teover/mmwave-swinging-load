@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<robot name="materials">
+
+  <material name="silver">
+    <color rgba="0.7 0.7 0.7 1"/>
+  </material>
+
+  <material name="blue">
+    <color rgba="0 0 0.9 1"/>
+  </material>
+
+
+  <material name="grey">
+    <color rgba="0.9 0.9 0.9 1"/>
+  </material>
+
+  <link name="ti_mmwave">
+    <visual>
+      <geometry>
+        <box size="3 0.1 0.1"/>
+      </geometry>
+      <material name="grey"/>
+      <origin xyz="1 0 0.5"/>
+    </visual>
+  </link>
+
+  <joint name="base_to_pipe_x" type="continuous">
+    <parent link="ti_mmwave"/>
+    <child link="steel_pipe_x_dummy"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="1 0 0.5"/>
+  </joint>
+
+  <link name="steel_pipe_x_dummy" />
+
+  <joint name="base_to_pipe_y" type="continuous">
+    <parent link="steel_pipe_x_dummy"/>
+    <child link="steel_pipe_y_dummy"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+  <link name="steel_pipe_y_dummy" />
+
+  <joint name="base_to_pipe_z" type="continuous">
+    <parent link="steel_pipe_y_dummy"/>
+    <child link="steel_pipe"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+  <link name="steel_pipe">
+    <visual>
+      <geometry>
+        <cylinder length="0.7" radius="0.05"/>
+      </geometry>
+      <origin xyz="0 0 -0.5"/>
+      <material name="silver"/>
+    </visual>
+  </link>
+
+  <joint name="base_to_pipe_x_radar" type="continuous">
+    <parent link="ti_mmwave"/>
+    <child link="steel_pipe_x_dummy_radar"/>
+    <axis xyz="1 0 0"/>
+    <origin xyz="1 0 0.5"/>
+  </joint>
+
+  <link name="steel_pipe_x_dummy_radar" />
+
+  <joint name="base_to_pipe_y_radar" type="continuous">
+    <parent link="steel_pipe_x_dummy_radar"/>
+    <child link="steel_pipe_y_dummy_radar"/>
+    <axis xyz="0 1 0"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+  <link name="steel_pipe_y_dummy_radar" />
+
+  <joint name="base_to_pipe_z_radar" type="continuous">
+    <parent link="steel_pipe_y_dummy_radar"/>
+    <child link="steel_pipe_radar"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+
+  <link name="steel_pipe_radar">
+    <visual>
+      <geometry>
+        <cylinder length="0.7" radius="0.05"/>
+      </geometry>
+      <origin xyz="0 0 -0.5"/>
+      <material name="blue"/>
+    </visual>
+  </link>
+
+</robot>
+
