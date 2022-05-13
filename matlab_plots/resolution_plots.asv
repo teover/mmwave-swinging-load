@@ -18,7 +18,6 @@ legend('AWR1843')
 rectangle("Position",[0.6 -0.4 0.8 0.8],'LineWidth',2,'EdgeColor','r')
 %title('1843 vs 6843 sensor characteristics')
 saveas(gcf, "eps-figures/fig1_1843", "epsc")
-saveas(gcf, "fig-files/fig1_1843", "fig")
 figure
 
 
@@ -31,7 +30,6 @@ ylabel('y-axis [m]')
 legend('AWR1843')
 %title('1843 vs 6843 sensor characteristics')
 saveas(gcf, "eps-figures/fig2_1843_zoom", "epsc")
-saveas(gcf, "fig-files/fig2_1843_zoom", "fig")
 figure
 
 scatter(datalog,"closestValue","dummy","filled","SizeData", 20)
@@ -44,7 +42,6 @@ rectangle("Position",[0.999 -0.001 0.002 0.002],'LineWidth',2,'EdgeColor','r')
 legend('IWR6843')
 %title('1843 vs 6843 sensor characteristics')
 saveas(gcf, "eps-figures/fig3_6843", "epsc")
-saveas(gcf, "fig-files/fig3_6843", "fig")
 figure
 
 

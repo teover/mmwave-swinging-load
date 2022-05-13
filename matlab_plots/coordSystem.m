@@ -53,4 +53,5 @@ view([39.89 12.00]);
 % Save as .eps
 set(gcf,'renderer','Painters')
 saveas(gcf,'eps-figures/coord-system','epsc')
+saveas(gcf, "fig-files/coord-system", "fig")
 

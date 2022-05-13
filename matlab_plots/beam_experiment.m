@@ -1,7 +1,7 @@
 close all;clear;clc;
 
 
-dataset = readtable("6843_data_log_beam.csv");
+dataset = readtable("logs/6843_data_log_beam.csv");
 
 
 
