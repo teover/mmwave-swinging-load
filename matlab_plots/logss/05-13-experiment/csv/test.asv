@@ -1,0 +1,67 @@
+close all;clear;clc;
+
+
+dataset = readtable("2022-05-13-16-46-13-linear-no-grouping-radar_scan.csv");
+
+
+close all;clear;clc;
+
+% Linear logs
+data_lin1 = readtable("logs/25.03-experiments/6843_1843_datalog_480-lin.csv");
+data_lin2 = readtable("logs/25.03-experiments/6843_1843_datalog_645-lin.csv");
+
+% Rotary logs
+data_rot1 = readtable("logs/25.03-experiments/6843_1843_datalog_65-rot.csv");
+data_rot2 = readtable("logs/25.03-experiments/6843_1843_datalog_365-rot.csv");
+data_rot3 = readtable("logs/25.03-experiments/6843_1843_datalog_411-rot.csv");
+data_rot4 = readtable("logs/25.03-experiments/6843_1843_datalog_421-rot.csv");
+
+% Logs with IMU
+data_imu = readtable("logs/25.03-experiments/velocity_data.csv");
+
+
+% Select dataset to use
+dataset = data_rot4;
+
+% Specify data range to use
+dataset = dataset(86:350, :);
+
+% Specify data range to use imu
+data_imu = data_imu(1:650, :);
+
+
+% Init arrays
+a = ones(height(dataset),1); % msg_x
+b = zeros(height(dataset),1); % msg_y
+adj_time = zeros(height(dataset),1); % msg_y
+
+% Filter radar data 
+% Check if velocity is more than 0,
+% Check if xy values are within [0.4 1.5 -0.7 0.9]
+for i=1:height(dataset)
+    if dataset.msg_velocity(i) ~= 0 && dataset.msg_x(i) < 1.5 && dataset.msg_x(i) > 0.4 && dataset.msg_y(i) > -0.7 && dataset.msg_y(i) < 0.9
+        a(i) = dataset.msg_x(i);
+        b(i) = dataset.msg_y(i);
+    end
+    adj_time(i) = dataset.rospy_get_time(i);
+
+end
+
+AWR1843 = "measurement radar";
+IWR6843 = "reference radar";
+
+% Plot 3 graphs
+
+hold on
+plot(adj_time, a) % dataset.msg_x
+plot(adj_time, dataset.bestX)
+legend(AWR1843, IWR6843)
+ylabel("X-postion [m]")
+xlabel('Time [s]')
+grid minor
+axis([4.3 16.4 0.75 1.25])
+set(gca,'FontSize',12)
+saveas(gcf, "eps-figures/fig_x_pos", "epsc")
+saveas(gcf, "fig-files/fig_x_pos", "fig")
+figure
+
