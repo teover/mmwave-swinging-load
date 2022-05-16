@@ -1,19 +1,19 @@
 close all;clear;clc;
 
 % Linear logs
-data_lin1 = readtable("logs/25.03-experiments/6843_1843_datalog_480-lin.csv");
-data_lin2 = readtable("logs/25.03-experiments/6843_1843_datalog_645-lin.csv");
-data_lin3 = readtable("logs/25.03-experiments/6843_1843_datalog_676-lin.csv");
-data_lin4 = readtable("logs/25.03-experiments/6843_1843_datalog_875-lin.csv");
+data_lin1 = readtable("logss/25.03-experiments/6843_1843_datalog_480-lin.csv");
+data_lin2 = readtable("logss/25.03-experiments/6843_1843_datalog_645-lin.csv");
+data_lin3 = readtable("logss/25.03-experiments/6843_1843_datalog_676-lin.csv");
+data_lin4 = readtable("logss/25.03-experiments/6843_1843_datalog_875-lin.csv");
 
 % Rotary logs
-data_rot1 = readtable("logs/25.03-experiments/6843_1843_datalog_65-rot.csv");
-data_rot2 = readtable("logs/25.03-experiments/6843_1843_datalog_365-rot.csv");
-data_rot3 = readtable("logs/25.03-experiments/6843_1843_datalog_411-rot.csv");
-data_rot4 = readtable("logs/25.03-experiments/6843_1843_datalog_421-rot.csv");
+data_rot1 = readtable("logss/25.03-experiments/6843_1843_datalog_65-rot.csv");
+data_rot2 = readtable("logss/25.03-experiments/6843_1843_datalog_365-rot.csv");
+data_rot3 = readtable("logss/25.03-experiments/6843_1843_datalog_411-rot.csv");
+data_rot4 = readtable("logss/25.03-experiments/6843_1843_datalog_421-rot.csv");
 
 % Logs with IMU
-data_imu = readtable("logs/25.03-experiments/velocity_data.csv");
+data_imu = readtable("logss/25.03-experiments/velocity_data.csv");
 
 
 % Select dataset to use
