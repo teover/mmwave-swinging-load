@@ -39,6 +39,9 @@ src/usb_webcam
 # qcreator stuff
 CMakeLists.txt.user
 
+# matlab
+*.asv
+
 srv/_*.py
 *.pcd
 *.pyc
